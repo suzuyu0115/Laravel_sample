@@ -35,9 +35,15 @@ class PostController extends Controller
         ]);
 
         $post = new Post();
-            $post->title = $inputs['title'];
-            $post->body  = $inputs['body'];
+        $post->title = $inputs['title'];
+        $post->body  = $inputs['body'];
         $post->user_id = auth()->user()->id;
+        if (request('image')) {
+            $original = request()->file('image')->getClientOriginalName();
+            $name = date('Ymd_His').'_'.$original;
+            request()->file('image')->move('storage/images', $name);
+            $post->image = $name;
+        }
         $post->save();
         return redirect()->route('post.create')->with('message', '投稿を作成しました');
     }
