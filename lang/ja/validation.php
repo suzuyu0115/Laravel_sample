@@ -243,7 +243,7 @@ return [
         'test_name' => 'テスト名',
         'text' => 'テキスト',
         'time' => '時間',
-        'title' => 'タイトル',
+        'title' => '件名',
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
